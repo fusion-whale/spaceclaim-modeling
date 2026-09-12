@@ -140,4 +140,6 @@ $S = "<repo>"; foreach ($c in "box","cylinder","channel_4x4x10","solids") {
 
 ## License
 
-未指定。如需开源授权请自行添加 `LICENSE`。
+[MIT](LICENSE) © 2026 fusion-whale
+
+可自由使用、修改、再发布（含商用与闭源），保留版权声明即可。
