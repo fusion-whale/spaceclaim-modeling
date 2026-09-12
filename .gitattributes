@@ -1,0 +1,6 @@
+# 统一换行符，避免 Windows / Linux 之间的 CRLF 抖动
+* text=auto
+*.py   text eol=lf
+*.md   text eol=lf
+*.ps1  text eol=crlf
+*.json text eol=lf

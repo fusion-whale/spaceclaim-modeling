@@ -1,0 +1,9 @@
+# SpaceClaim 产物与运行日志（体积大、可重新生成，不入库）
+*.scdocx
+*.scdoc
+*.scjournal
+*.log
+
+# Python
+__pycache__/
+*.pyc
