@@ -167,12 +167,12 @@ round_outer_rims(pipe, 1.0)                         # 管口两圈圆边
 ```powershell
 $S = "<repo>"
 foreach ($c in "box","cylinder","channel_4x4x10","solids","boundaries","split","rotate",
-               "pairs","polygon","profile","revolve","sphere","imprint","external_flow","fillet","elbow") {
+               "pairs","polygon","profile","revolve","sphere","imprint","external_flow","fillet","elbow","shell") {
   & "$S\scripts\Invoke-Scdm.ps1" -Script "$S\tests\selftest_$c.py" -Out "$S\tests\selftest_$c.scdocx" -Verify
 }
 ```
 
-16 个用例都必须以 `[scdm] status=ok` 结束。基线值（都来自真实运行，漂移即说明流水线坏了）：
+17 个用例都必须以 `[scdm] status=ok` 结束。基线值（都来自真实运行，漂移即说明流水线坏了）：
 
 | 用例 | 回读尺寸 / 拓扑 | 命名选择 |
 |---|---|---|
@@ -192,6 +192,7 @@ foreach ($c in "box","cylinder","channel_4x4x10","solids","boundaries","split","
 | `selftest_external_flow` | `Domain 60×40×40`(7 面，圆柱障碍物被吃成空腔) | inlet/outlet 1600 · obstacle 1256.64 · 顶底壁 2321.46 · 侧壁 2×2400 mm² |
 | `selftest_fillet` | `RoundCube 20³`(26 面/48 边) · `RoundCubeZ`(10) · `ChamferCube`(26) · `RoundTube`(8) · `RoundedDuct`(10) · `RuleBox`(26) · `ChamferTwo`(10) · `FaceRound`(10) 等 10 个体 | cu_inlet 256.00(=16²) · cu_edge_fillet 12×50.27 · cu_corner 8×6.28 · cz_inlet 392.27 · duct_inlet 15.14 |
 | `selftest_elbow` | 3 个体：`Bend 44×44×6.009`(7 面) · `Elbow45`(3) · `UTurn`(3) | Bend: inlet/outlet 各 28.27 · bend_wall 573.89 · wall 4 面；Elbow45: 端面各 12.57 · 环面 148.04；UTurn: 端面各 12.57 · 环面 473.74 |
+| `selftest_shell` | 7 个体：`HollowCube 20³`(12 面) · `OpenCup`(11) · `OpenDuct`(10) · `HollowCyl`(6) · `Outward 24³`(12) · `TooThick`(6，t=11 被拒且未改动) · `PreNamed`(11) | hollow_outer 6×400.00 · hollow_cavity 6×256.00 · cup_rim 144.00 · duct_inner 4×320.00 · pre_outlet 被重映射成 144.00 |
 
 `selftest_fillet` 里的数字都对着手算核过：20mm 立方体全倒圆 r=2 的总面积 2189.451 mm² = `6×256 + 12×(π·2/2)·16 + 8×(4π·2²/8)`。
 
@@ -201,7 +202,7 @@ foreach ($c in "box","cylinder","channel_4x4x10","solids","boundaries","split","
 - **`Sweep`（扫掠）没打通，但弯管已经能做了**。`Sweep.Execute` 会在**什么都不生成**的情况下返回 `Success=True`（实测折线路径、平面内圆弧路径、参数开关两个取值都试过）。**弯头/弯管请改用 `elbow()` / `torus()`**（草图圆 + 回转 = 真圆截面圆环段），不需要 Sweep。
 - **`Loft` / `ExtrudeProfile` 用不了**（`references/api-notes.md` §7.3）。
 - **`FullRound` 没生效**：`FullRound.Execute(面选择, None)` 返回 `Success=True` 但面数不变。
-- **没有封装**：抽壳、曲面、装配、阵列、直接镜像（旋转/平移/圆角/倒角/弯头都已经有了）。
+- **没有封装**：曲面、装配、阵列、直接镜像（旋转/平移/圆角/倒角/弯头/抽壳都已经有了）。
 - **不做网格与求解**：本项目只产几何和命名分区。
 - 曲面测量的面心在**平面内**有小幅采样偏差；沿法向的坐标是精确的，按轴分类不受影响。
 - 倒圆角后**平面面会内缩成 `(边长 − 2r)²` 的方块**（相切处不生成边），按面积写规则时要按这个数来，别用"圆角矩形"公式。
@@ -217,7 +218,7 @@ foreach ($c in "box","cylinder","channel_4x4x10","solids","boundaries","split","
 │   └── template_model.py       模型脚本模板
 ├── references/
 │   └── api-notes.md            反射验证过的 API 签名、命令行参数表、走不通的路
-└── tests/                      16 个回归用例
+└── tests/                      17 个回归用例
 ```
 
 `references/api-notes.md` 记录了大量**负面结论**（哪些调用会失败、失败报什么错、错误信息是什么语言），价值不比正面文档低。
