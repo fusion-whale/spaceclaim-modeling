@@ -103,6 +103,8 @@ git clone https://github.com/fusion-whale/spaceclaim-modeling.git
 | `tube(外r, 内r, h, origin, axis, name)` | 空心圆管 | 30×12×12，4 面 |
 | `sphere(r, center, name, cut)` | 球；`cut=True` 抠球腔（内部走 `ForceCut`，普通 `Cut` 对球无效） | r5 → 1 面 314.16 mm² |
 | `cone_frustum(r1, r2, h, origin, axis, name)` | **真**锥台/圆锥（走回转体） | r10→r4×20，3 面 |
+| `elbow(r, R, angle_deg, origin, axis, name)` | **真圆截面**弯头（回转出的圆环段） | r3/R20/90° → 3 面，torus 592.18 + 两端面 28.27 各；包围盒 23×23×6 |
+| `torus(r, R, …)` | 整圈圆环（= 弯曲 360°） | 1 个 torus 面 2368.71 mm² = 4π²Rr，包围盒 46×46×6 |
 | `polygon_prism(sides, r, h, …)` / `profile_prisms([…])` | 正多边形 / 任意折线 / 椭圆截面的柱体 | 正六边形 8 面、椭圆 3 面 |
 | `move(body, dx, dy, dz)` | 整体平移 | 位移精确 |
 | `rotate(body, 角度, axis, center)` | 绕轴旋转（**传角度，库内部换弧度**） | 45° 旋转后包围盒 35.355 |
@@ -165,12 +167,12 @@ round_outer_rims(pipe, 1.0)                         # 管口两圈圆边
 ```powershell
 $S = "<repo>"
 foreach ($c in "box","cylinder","channel_4x4x10","solids","boundaries","split","rotate",
-               "pairs","polygon","profile","revolve","sphere","imprint","external_flow","fillet") {
+               "pairs","polygon","profile","revolve","sphere","imprint","external_flow","fillet","elbow") {
   & "$S\scripts\Invoke-Scdm.ps1" -Script "$S\tests\selftest_$c.py" -Out "$S\tests\selftest_$c.scdocx" -Verify
 }
 ```
 
-15 个用例都必须以 `[scdm] status=ok` 结束。基线值（都来自真实运行，漂移即说明流水线坏了）：
+16 个用例都必须以 `[scdm] status=ok` 结束。基线值（都来自真实运行，漂移即说明流水线坏了）：
 
 | 用例 | 回读尺寸 / 拓扑 | 命名选择 |
 |---|---|---|
@@ -189,16 +191,17 @@ foreach ($c in "box","cylinder","channel_4x4x10","solids","boundaries","split","
 | `selftest_imprint` | `Plate 40×40×10`(切分后 7 面) + `Cutter` | patch 78.54 mm² loops=1 · rest 1521.46 mm² loops=2 |
 | `selftest_external_flow` | `Domain 60×40×40`(7 面，圆柱障碍物被吃成空腔) | inlet/outlet 1600 · obstacle 1256.64 · 顶底壁 2321.46 · 侧壁 2×2400 mm² |
 | `selftest_fillet` | `RoundCube 20³`(26 面/48 边) · `RoundCubeZ`(10) · `ChamferCube`(26) · `RoundTube`(8) · `RoundedDuct`(10) · `RuleBox`(26) · `ChamferTwo`(10) · `FaceRound`(10) 等 10 个体 | cu_inlet 256.00(=16²) · cu_edge_fillet 12×50.27 · cu_corner 8×6.28 · cz_inlet 392.27 · duct_inlet 15.14 |
+| `selftest_elbow` | 3 个体：`Bend 44×44×6.009`(7 面) · `Elbow45`(3) · `UTurn`(3) | Bend: inlet/outlet 各 28.27 · bend_wall 573.89 · wall 4 面；Elbow45: 端面各 12.57 · 环面 148.04；UTurn: 端面各 12.57 · 环面 473.74 |
 
 `selftest_fillet` 里的数字都对着手算核过：20mm 立方体全倒圆 r=2 的总面积 2189.451 mm² = `6×256 + 12×(π·2/2)·16 + 8×(4π·2²/8)`。
 
 ## 已知限制（诚实清单）
 
 - **草图类几何必须最先建**。`polygon_prism` / `profile_prisms` / `extrude_circle` / `revolve_*` 都走 SpaceClaim 的草图工具，而**文档里一旦有实体，新建草图就会崩**（`SketchPolygon.Create` 抛空引用，宿主日志里只有一句空的 `Script failed:`）。批量接口会先画完所有轮廓再切 Solid 模式，所以它们只能出现在脚本开头。
-- **`Sweep`（扫掠/弯管）没打通**。`Sweep.Execute` 会在**什么都不生成**的情况下返回 `Success=True`（实测折线路径、平面内圆弧路径都静默无操作）。判定扫掠必须看体数/面数，永远不能看 `Success`。
+- **`Sweep`（扫掠）没打通，但弯管已经能做了**。`Sweep.Execute` 会在**什么都不生成**的情况下返回 `Success=True`（实测折线路径、平面内圆弧路径、参数开关两个取值都试过）。**弯头/弯管请改用 `elbow()` / `torus()`**（草图圆 + 回转 = 真圆截面圆环段），不需要 Sweep。
 - **`Loft` / `ExtrudeProfile` 用不了**（`references/api-notes.md` §7.3）。
 - **`FullRound` 没生效**：`FullRound.Execute(面选择, None)` 返回 `Success=True` 但面数不变。
-- **没有封装**：抽壳、曲面、装配、阵列、直接镜像（旋转可以用 `rotate`）。
+- **没有封装**：抽壳、曲面、装配、阵列、直接镜像（旋转/平移/圆角/倒角/弯头都已经有了）。
 - **不做网格与求解**：本项目只产几何和命名分区。
 - 曲面测量的面心在**平面内**有小幅采样偏差；沿法向的坐标是精确的，按轴分类不受影响。
 - 倒圆角后**平面面会内缩成 `(边长 − 2r)²` 的方块**（相切处不生成边），按面积写规则时要按这个数来，别用"圆角矩形"公式。
@@ -214,7 +217,7 @@ foreach ($c in "box","cylinder","channel_4x4x10","solids","boundaries","split","
 │   └── template_model.py       模型脚本模板
 ├── references/
 │   └── api-notes.md            反射验证过的 API 签名、命令行参数表、走不通的路
-└── tests/                      15 个回归用例
+└── tests/                      16 个回归用例
 ```
 
 `references/api-notes.md` 记录了大量**负面结论**（哪些调用会失败、失败报什么错、错误信息是什么语言），价值不比正面文档低。
