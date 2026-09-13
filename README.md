@@ -51,14 +51,17 @@ SpaceClaim 的脚本 API 本身能用，但**"从命令行把它跑起来"这条
 
 ## 安装
 
-```bash
+```powershell
 # 方式一：作为 DSH（DeepSeek Harness）技能安装，之后 agent 会自动发现并调用
-git clone https://github.com/fusion-whale/spaceclaim-modeling.git \
-          ~/.dsh/skills/spaceclaim-modeling
+git clone https://github.com/fusion-whale/spaceclaim-modeling.git "$env:USERPROFILE\.dsh\skills\spaceclaim-modeling"
 
 # 方式二：当普通命令行工具用，clone 到任意位置即可
 git clone https://github.com/fusion-whale/spaceclaim-modeling.git
 ```
+
+> 上面是 Windows PowerShell 写法。用 Git Bash / WSL 的话等价写法是
+> `git clone <url> ~/.dsh/skills/spaceclaim-modeling`。
+> 装完不用重启：DSH 的技能提供方会扫描 `<dshHome>/skills` 并在下一次模型步进时刷新目录。
 
 ## 用法
 
