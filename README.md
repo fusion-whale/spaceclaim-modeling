@@ -159,6 +159,24 @@ mirror(half, faces_by_normal(half, "x", -1)[0], merge=True)        # 半模型�
 
 ⚠️ 没用官方的 `Pattern.CreateLinear` —— 实测它会把体搬进 **component**（`Bodies.Count` 变 0、`Components.Count` 变 1），下游的命名与校验就全看不见体了。这里用"`Copy.Execute` + 平移/旋转"实现，实例始终留在根零件下。另外 **cutter 与壁面相切时 `cut=True` 会静默失效**（实测 3×3 管束只挖出 4 根）。
 
+**曲面 + 加厚 / 装配**
+
+| 函数 | 说明 |
+|---|---|
+| `rect_surface(w, h, origin, normal, name)` / `circle_surface(r, center, normal, name)` | 零厚度的面体（挡板、薄板的基础） |
+| `thicken(target, value, direction, symmetric=False)` | 把面体加厚成实体，或把实体的面"拉"出来 |
+| `component(name)` / `move_to_component` / `move_to_root` / `component_bodies` / `all_bodies` | 组件（装配）的建、搬、查 |
+| `explode_to_components(bodies)` / `drop_empty_components()` / `assembly_summary()` | 一网打尽 / 删空组件 / 看结构 |
+
+```python
+plate = rect_surface(30.0, 20.0, normal="y", name="Baffle")
+plate = thicken(plate, 1.0, direction="y")            # 必须接返回值：加厚会替换掉原面体
+asm = component("Assembly1"); move_to_component(body, asm)
+move_to_root(component_bodies(asm)); drop_empty_components()
+```
+
+⚠️ 三条实测坑：`symmetric=True` 的**总厚是 value 的两倍**；给曲面加厚会**替换**掉那个面体（旧对象失效，必须用返回值）；**体一进组件 `GetRootPart().Bodies` 就看不到它了**，而且搬空后留下的空组件会让 `NamedSelection.GetGroups()` 抛中文空引用 —— 所以 `move_to_root` 之后一定要 `drop_empty_components()`。`Midsurface.Convert` 实测是空操作，中面提取用不了。
+
 **命名边界**（挑面 + 命名，规则按顺序、先匹配先占）
 
 | 函数 | 说明 |
@@ -198,12 +216,12 @@ mirror(half, faces_by_normal(half, "x", -1)[0], merge=True)        # 半模型�
 ```powershell
 $S = "<repo>"
 foreach ($c in "box","cylinder","channel_4x4x10","solids","boundaries","split","rotate",
-               "pairs","polygon","profile","revolve","sphere","imprint","external_flow","fillet","elbow","shell","array") {
+               "pairs","polygon","profile","revolve","sphere","imprint","external_flow","fillet","elbow","shell","array","surface_asm") {
   & "$S\scripts\Invoke-Scdm.ps1" -Script "$S\tests\selftest_$c.py" -Out "$S\tests\selftest_$c.scdocx" -Verify
 }
 ```
 
-18 个用例都必须以 `[scdm] status=ok` 结束。基线值（都来自真实运行，漂移即说明流水线坏了）：
+19 个用例都必须以 `[scdm] status=ok` 结束。基线值（都来自真实运行，漂移即说明流水线坏了）：
 
 | 用例 | 回读尺寸 / 拓扑 | 命名选择 |
 |---|---|---|
@@ -224,6 +242,7 @@ foreach ($c in "box","cylinder","channel_4x4x10","solids","boundaries","split","
 | `selftest_fillet` | `RoundCube 20³`(26 面/48 边) · `RoundCubeZ`(10) · `ChamferCube`(26) · `RoundTube`(8) · `RoundedDuct`(10) · `RuleBox`(26) · `ChamferTwo`(10) · `FaceRound`(10) 等 10 个体 | cu_inlet 256.00(=16²) · cu_edge_fillet 12×50.27 · cu_corner 8×6.28 · cz_inlet 392.27 · duct_inlet 15.14 |
 | `selftest_elbow` | 3 个体：`Bend 44×44×6.009`(7 面) · `Elbow45`(3) · `UTurn`(3) | Bend: inlet/outlet 各 28.27 · bend_wall 573.89 · wall 4 面；Elbow45: 端面各 12.57 · 环面 148.04；UTurn: 端面各 12.57 · 环面 473.74 |
 | `selftest_shell` | 7 个体：`HollowCube 20³`(12 面) · `OpenCup`(11) · `OpenDuct`(10) · `HollowCyl`(6) · `Outward 24³`(12) · `TooThick`(6，t=11 被拒且未改动) · `PreNamed`(11) | hollow_outer 6×400.00 · hollow_cavity 6×256.00 · cup_rim 144.00 · duct_inner 4×320.00 · pre_outlet 被重映射成 144.00 |
+| `selftest_surface_asm` | 7 个体：`RectSurf 20×10×2` · `CircSurf 20×20×0`(**1 面**) · `SymSurf 40×40×8` · `PullMe 20×20×25` · `Baffle 30×1×20` · `CompA`/`CompB` | 加厚替换掉原面体、symmetric 总厚翻倍；装配搬进搬出根零件数 7→6→7 |
 | `selftest_array` | 22 个体：`Pin_1..4` · `Fin_1..6` · `Blade_1..6`（各 6 面） · `Half`(合并后 20×10×10) · `Half2`+`Half2Mirror` · `BankDomain`(**15 面**) | inlet/outlet 各 1200.00 · bank_tubes **9×565.49** · 上下壁各 2145.53 = 2400 − 9π·3² |
 
 `selftest_fillet` 里的数字都对着手算核过：20mm 立方体全倒圆 r=2 的总面积 2189.451 mm² = `6×256 + 12×(π·2/2)·16 + 8×(4π·2²/8)`。
@@ -234,7 +253,7 @@ foreach ($c in "box","cylinder","channel_4x4x10","solids","boundaries","split","
 - **`Sweep`（扫掠）没打通，但弯管已经能做了**。`Sweep.Execute` 会在**什么都不生成**的情况下返回 `Success=True`（实测折线路径、平面内圆弧路径、参数开关两个取值都试过）。**弯头/弯管请改用 `elbow()` / `torus()`**（草图圆 + 回转 = 真圆截面圆环段），不需要 Sweep。
 - **`Loft` / `ExtrudeProfile` 用不了**（`references/api-notes.md` §7.3）。
 - **`FullRound` 没生效**：`FullRound.Execute(面选择, None)` 返回 `Success=True` 但面数不变。
-- **没有封装**：曲面、装配（旋转/平移/圆角/倒角/弯头/抽壳/阵列/镜像都已经有了）。
+- **没有封装**：中面提取（`Midsurface.Convert` 实测是空操作）、多实体装配的层级展开（目前只有根零件 + 一层组件）。
 - **不做网格与求解**：本项目只产几何和命名分区。
 - 曲面测量的面心在**平面内**有小幅采样偏差；沿法向的坐标是精确的，按轴分类不受影响。
 - 倒圆角后**平面面会内缩成 `(边长 − 2r)²` 的方块**（相切处不生成边），按面积写规则时要按这个数来，别用"圆角矩形"公式。
@@ -250,7 +269,7 @@ foreach ($c in "box","cylinder","channel_4x4x10","solids","boundaries","split","
 │   └── template_model.py       模型脚本模板
 ├── references/
 │   └── api-notes.md            反射验证过的 API 签名、命令行参数表、走不通的路
-└── tests/                      18 个回归用例
+└── tests/                      19 个回归用例
 ```
 
 `references/api-notes.md` 记录了大量**负面结论**（哪些调用会失败、失败报什么错、错误信息是什么语言），价值不比正面文档低。
