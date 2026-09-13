@@ -128,6 +128,37 @@ round_face_edges(faces_by_normal(cube, "z", 1), 3.0)  # 顶面四周
 round_outer_rims(pipe, 1.0)                         # 管口两圈圆边
 ```
 
+**抽壳**
+
+| 函数 | 说明 |
+|---|---|
+| `shell(body, t, open_faces=None, outward=False)` | 掏成等壁厚的壳；默认外表面不动、壁往内长；`open_faces` 给开口面 |
+
+```python
+shell(cube, 2.0)                                         # 全封闭空腔
+shell(cup, 2.0, open_faces=faces_by_normal(cup, "z", 1)) # 顶面开口
+shell(solid, 2.0, outward=True)                          # 原表面当内壁、壁往外长
+```
+
+⚠️ SpaceClaim 命令本身的语义是"**原表面变内壁、壁往外长**"（20mm 立方体传 `+2` 得到 24³），`shell()` 默认帮你取了负号。实测 20³ 立方体 t=2 全封闭 → 12 面、总面积 3936.00 = 6×400 + 6×256（16³ 空腔）；开口顶面 → 11 面 3552.00。
+
+**阵列 / 镜像**（管束、针翅、叶片排）
+
+| 函数 | 说明 |
+|---|---|
+| `array_linear(body, count, pitch, axis, count2, pitch2, axis2, name)` | 线性 / 二维阵列，返回所有实例 |
+| `array_circular(body, count, axis, center, angle_deg, name)` | 圆周阵列（整圈或指定张角） |
+| `mirror(body, plane_face, merge=True, name)` | 按一张**已存在的平面面**镜像 |
+
+```python
+array_linear(seed, 4, 20.0, axis="x", name="Pin")                  # 4 个，间距 20
+array_linear(seed, 3, 20.0, axis="x", count2=2, pitch2=25.0)       # 3x2
+array_circular(blade, 6, axis="z", center=(0, 0, 0), name="Blade") # 整圈 6 个
+mirror(half, faces_by_normal(half, "x", -1)[0], merge=True)        # 半模型补成整模型
+```
+
+⚠️ 没用官方的 `Pattern.CreateLinear` —— 实测它会把体搬进 **component**（`Bodies.Count` 变 0、`Components.Count` 变 1），下游的命名与校验就全看不见体了。这里用"`Copy.Execute` + 平移/旋转"实现，实例始终留在根零件下。另外 **cutter 与壁面相切时 `cut=True` 会静默失效**（实测 3×3 管束只挖出 4 根）。
+
 **命名边界**（挑面 + 命名，规则按顺序、先匹配先占）
 
 | 函数 | 说明 |
@@ -167,12 +198,12 @@ round_outer_rims(pipe, 1.0)                         # 管口两圈圆边
 ```powershell
 $S = "<repo>"
 foreach ($c in "box","cylinder","channel_4x4x10","solids","boundaries","split","rotate",
-               "pairs","polygon","profile","revolve","sphere","imprint","external_flow","fillet","elbow","shell") {
+               "pairs","polygon","profile","revolve","sphere","imprint","external_flow","fillet","elbow","shell","array") {
   & "$S\scripts\Invoke-Scdm.ps1" -Script "$S\tests\selftest_$c.py" -Out "$S\tests\selftest_$c.scdocx" -Verify
 }
 ```
 
-17 个用例都必须以 `[scdm] status=ok` 结束。基线值（都来自真实运行，漂移即说明流水线坏了）：
+18 个用例都必须以 `[scdm] status=ok` 结束。基线值（都来自真实运行，漂移即说明流水线坏了）：
 
 | 用例 | 回读尺寸 / 拓扑 | 命名选择 |
 |---|---|---|
@@ -193,6 +224,7 @@ foreach ($c in "box","cylinder","channel_4x4x10","solids","boundaries","split","
 | `selftest_fillet` | `RoundCube 20³`(26 面/48 边) · `RoundCubeZ`(10) · `ChamferCube`(26) · `RoundTube`(8) · `RoundedDuct`(10) · `RuleBox`(26) · `ChamferTwo`(10) · `FaceRound`(10) 等 10 个体 | cu_inlet 256.00(=16²) · cu_edge_fillet 12×50.27 · cu_corner 8×6.28 · cz_inlet 392.27 · duct_inlet 15.14 |
 | `selftest_elbow` | 3 个体：`Bend 44×44×6.009`(7 面) · `Elbow45`(3) · `UTurn`(3) | Bend: inlet/outlet 各 28.27 · bend_wall 573.89 · wall 4 面；Elbow45: 端面各 12.57 · 环面 148.04；UTurn: 端面各 12.57 · 环面 473.74 |
 | `selftest_shell` | 7 个体：`HollowCube 20³`(12 面) · `OpenCup`(11) · `OpenDuct`(10) · `HollowCyl`(6) · `Outward 24³`(12) · `TooThick`(6，t=11 被拒且未改动) · `PreNamed`(11) | hollow_outer 6×400.00 · hollow_cavity 6×256.00 · cup_rim 144.00 · duct_inner 4×320.00 · pre_outlet 被重映射成 144.00 |
+| `selftest_array` | 22 个体：`Pin_1..4` · `Fin_1..6` · `Blade_1..6`（各 6 面） · `Half`(合并后 20×10×10) · `Half2`+`Half2Mirror` · `BankDomain`(**15 面**) | inlet/outlet 各 1200.00 · bank_tubes **9×565.49** · 上下壁各 2145.53 = 2400 − 9π·3² |
 
 `selftest_fillet` 里的数字都对着手算核过：20mm 立方体全倒圆 r=2 的总面积 2189.451 mm² = `6×256 + 12×(π·2/2)·16 + 8×(4π·2²/8)`。
 
@@ -202,7 +234,7 @@ foreach ($c in "box","cylinder","channel_4x4x10","solids","boundaries","split","
 - **`Sweep`（扫掠）没打通，但弯管已经能做了**。`Sweep.Execute` 会在**什么都不生成**的情况下返回 `Success=True`（实测折线路径、平面内圆弧路径、参数开关两个取值都试过）。**弯头/弯管请改用 `elbow()` / `torus()`**（草图圆 + 回转 = 真圆截面圆环段），不需要 Sweep。
 - **`Loft` / `ExtrudeProfile` 用不了**（`references/api-notes.md` §7.3）。
 - **`FullRound` 没生效**：`FullRound.Execute(面选择, None)` 返回 `Success=True` 但面数不变。
-- **没有封装**：曲面、装配、阵列、直接镜像（旋转/平移/圆角/倒角/弯头/抽壳都已经有了）。
+- **没有封装**：曲面、装配（旋转/平移/圆角/倒角/弯头/抽壳/阵列/镜像都已经有了）。
 - **不做网格与求解**：本项目只产几何和命名分区。
 - 曲面测量的面心在**平面内**有小幅采样偏差；沿法向的坐标是精确的，按轴分类不受影响。
 - 倒圆角后**平面面会内缩成 `(边长 − 2r)²` 的方块**（相切处不生成边），按面积写规则时要按这个数来，别用"圆角矩形"公式。
@@ -218,7 +250,7 @@ foreach ($c in "box","cylinder","channel_4x4x10","solids","boundaries","split","
 │   └── template_model.py       模型脚本模板
 ├── references/
 │   └── api-notes.md            反射验证过的 API 签名、命令行参数表、走不通的路
-└── tests/                      17 个回归用例
+└── tests/                      18 个回归用例
 ```
 
 `references/api-notes.md` 记录了大量**负面结论**（哪些调用会失败、失败报什么错、错误信息是什么语言），价值不比正面文档低。
