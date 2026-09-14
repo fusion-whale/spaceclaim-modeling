@@ -4,6 +4,10 @@
 *.scjournal
 *.log
 
+# 例外：samples/ 里放的是**已独立校验过的成品模型**，
+# 是给人"clone 下来直接用 SpaceClaim 打开看"的，要入库
+!samples/*.scdocx
+
 # Python
 __pycache__/
 *.pyc
