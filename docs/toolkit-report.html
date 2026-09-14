@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>SpaceClaim 建模工具包 · 能力与实测结果</title>
+<style>
+  :root{
+    --bg:#0f1216; --panel:#171c22; --panel2:#1e242c; --line:#2b333d;
+    --fg:#e6ebf1; --mut:#93a1b0; --acc:#4cc2ff; --ok:#3ddc97; --warn:#ffb454; --bad:#ff6b6b;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);
+    font:15px/1.7 "Segoe UI","Microsoft YaHei",system-ui,sans-serif;}
+  .wrap{max-width:1180px;margin:0 auto;padding:44px 26px 80px}
+  h1{font-size:30px;margin:0 0 6px;letter-spacing:.2px}
+  h2{font-size:20px;margin:44px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+  h3{font-size:16px;margin:26px 0 8px;color:var(--acc)}
+  p{color:#cdd6e0}
+  .sub{color:var(--mut);margin:0 0 26px}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:26px 0 8px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .stat b{display:block;font-size:26px;color:var(--acc);line-height:1.2}
+  .stat span{color:var(--mut);font-size:13px}
+  table{width:100%;border-collapse:collapse;margin:12px 0 6px;font-size:14px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:var(--panel2);color:#cfe3f5;font-weight:600}
+  td code,p code,li code{background:#11161c;border:1px solid var(--line);border-radius:5px;
+    padding:1px 6px;font-family:Consolas,"Cascadia Mono",monospace;font-size:13px;color:#a8e0ff}
+  pre{background:#0b0f13;border:1px solid var(--line);border-radius:10px;padding:14px 16px;
+    overflow:auto;font-family:Consolas,"Cascadia Mono",monospace;font-size:13px;line-height:1.6;color:#d7e3ee}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:820px){.grid2{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .card h3{margin-top:0}
+  ul{padding-left:20px}
+  li{margin:6px 0}
+  .ok{color:var(--ok);font-weight:600}
+  .warn{color:var(--warn);font-weight:600}
+  .bad{color:var(--bad);font-weight:600}
+  .tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:1px 9px;
+    font-size:12px;color:var(--mut);margin-right:6px}
+  .num{font-family:Consolas,monospace;color:#a8e0ff}
+  footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--line);color:var(--mut);font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>SpaceClaim 建模工具包 · 能力与实测结果</h1>
+  <p class="sub">命令行驱动 Ansys SpaceClaim 建 CFD 几何 + 命名边界条件，每一步都有独立校验。
+  <span class="tag">SpaceClaim 2022 R1 / v221</span><span class="tag">Windows PowerShell 5.1</span></p>
+
+  <div class="stats">
+    <div class="stat"><b>29</b><span>自动校验的运行（21 回归 + 8 示例），本轮全绿</span></div>
+    <div class="stat"><b>4</b><span>已校验的示例模型</span></div>
+    <div class="stat"><b>153</b><span>scdm_lib.py 里的函数</span></div>
+    <div class="stat"><b>2</b><span>GitHub 仓库（skill + DSH 预设）</span></div>
+  </div>
+
+  <h2>一、能力矩阵</h2>
+  <table>
+    <tr><th style="width:130px">能力</th><th>入口</th><th>实测结果（都对着手算核过）</th></tr>
+    <tr><td>基本体</td><td><code>box</code> <code>cylinder</code> <code>tube</code> <code>sphere</code> <code>cone_frustum</code> <code>polygon_prism</code> <code>profile_prisms</code></td>
+      <td>6×5×20 块 6 面；r2.5×30 柱 3 面；圆管 4 面；球 1 面 314.16 mm²；真锥台 r10→r4×20 三面；正六边形柱 8 面</td></tr>
+    <tr><td>倒圆角 / 倒角</td><td><code>round_edges</code> <code>chamfer_edges</code> <code>round_face_edges</code> <code>round_by_rules</code></td>
+      <td>20³ 全倒圆 r=2 → 面数 6→<span class="num">26</span>，总面 <span class="num">2189.451 mm²</span> = 6×256 + 12×50.265 + 8×6.283</td></tr>
+    <tr><td>真圆截面弯头</td><td><code>elbow</code> <code>elbows</code> <code>torus</code></td>
+      <td>r3/R20/90° → 3 面，环面 <span class="num">592.176 = 4π²Rr/4</span> + 两端面 28.274；整圈 1 个 torus 面 2368.705</td></tr>
+    <tr><td>抽壳</td><td><code>shell(body, t, open_faces, outward)</code></td>
+      <td>20³ t=2 全封闭 → 12 面 <span class="num">3936.00</span> = 6×400 + 6×256；开口顶面 11 面 3552.00</td></tr>
+    <tr><td>阵列 / 镜像</td><td><code>array_linear</code> <code>array_circular</code> <code>mirror</code></td>
+      <td>10³ 沿 X 4 个 → 4 体 24 面 2400；3×2 → 6 体 3600；6³ 叶片半径 20 整圈 6 个 → 1296；镜像 merge=True → 1 体 20×10×10</td></tr>
+    <tr><td>曲面 + 加厚</td><td><code>rect_surface</code> <code>circle_surface</code> <code>thicken</code></td>
+      <td>20×10 零厚度面 1 面 200 → 加厚 2mm 后 6 面 520；<code>symmetric</code> 总厚是 value 的两倍</td></tr>
+    <tr><td>装配组件</td><td><code>component</code> <code>move_to_component</code> <code>move_to_root</code> <code>all_bodies</code> <code>all_components</code> <code>drop_empty_components</code></td>
+      <td>体进组件后根零件 <code>Bodies</code> 2→1、<code>Components</code> 0→1；搬回 1→2；搬空后必须删空组件。**嵌套组件**（组件里再套组件）实测可用：根 7 体 + 外层 1 + 内层 2 → <code>all_components()</code>=2、<code>component_bodies(deep=True)</code>=3、<code>all_bodies()</code>=10（无重复计数）</td></tr>
+    <tr><td>命名边界条件</td><td><code>name_faces_by_rules</code> <code>name_boundaries</code> <code>name_interfaces</code> <code>name_internal_baffle</code></td>
+      <td>规则按顺序、先匹配先占；支持 <code>normal/sign/at/between/in_box/area_min/area_max/kind/loops/point/nearest/rest</code></td></tr>
+    <tr><td>多体 CHT 交界面</td><td><code>name_interfaces_multi</code> <code>interface_report</code> <code>interface_pairing_by_body</code> <code>interface_gaps</code></td>
+      <td>跨几十个体成对命名（<code>grouped=True</code> 打成一对 zone）+ <b>配平自检 + 逐体点名</b>。实测 12 根管三层 CHT：两处交界面各 12 对、两侧面积各 <span class="num">37699.11</span> / <span class="num">30159.29</span>，与手算逐位相等；故意把一侧做长 10mm 立刻 <code>balanced=False</code>；把一根管只插进去一半（x 20..80、孔 0..100）则被 <code>interface_gaps</code> 点名</td></tr>
+    <tr><td>CHT 自动分层检查</td><td><code>cht_check</code> <code>interface_graph</code> <code>allow_split</code></td>
+      <td>对<b>每一对层</b>自动算交界面，不用指定哪两层相接。四层带折流板模型实测：自动判出 4 组相接（壳程↔折流板 6 / 壳程↔管壁 3整+18分段 / 折流板↔管壁 9分段 / 管壁↔管程 12），并<b>正确判定壳程↔管程不接触</b>；无孤立体、<code>ok=True</code></td></tr>
+    <tr><td>分割</td><td><code>split_face_by_line</code> <code>split_face_by_body</code> <code>split_body_by_plane</code></td>
+      <td>一张底面切两半分别命名；在面上"盖章"出 patch + 带内环的 rest</td></tr>
+  </table>
+
+  <h2>二、示例模型（examples/，四个都跑过 -Verify）</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>管壳式换热器壳程</h3>
+      <p class="sub" style="margin:0 0 8px">100×50×40 壳 + 12 根贯穿换热管 + 2 块弓形折流板</p>
+      <ul>
+        <li>44 个面（20 平面 + 24 圆柱面）</li>
+        <li>进出口各 <span class="num">1396.81 mm²</span></li>
+        <li>折流板 4 面各 <span class="num">823.01 mm²</span></li>
+        <li>管壁合计 <span class="num">29405.31 mm²</span></li>
+        <li>壁面 14 面 17664.00 mm²</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>针翅散热器流道</h3>
+      <p class="sub" style="margin:0 0 8px">120×40×30 流道 + 10×4 = 40 根 r2 高 20 的针翅</p>
+      <ul>
+        <li>86 个面（46 平面 + 40 圆柱面）</li>
+        <li>进出口各 <span class="num">1200.00</span>、顶面 4800.00</li>
+        <li>底面 <span class="num">4297.35</span> = 4800 − 40·π·2²</li>
+        <li>针翅侧面 <span class="num">10053.10</span> = 40·2π·2·20</li>
+        <li>针翅顶面 <span class="num">502.65</span> = 40·π·2²</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>曲面加厚 + 装配</h3>
+      <p class="sub" style="margin:0 0 8px">40×30 零厚度面 → 3mm 导流板；组件搬进搬出</p>
+      <ul>
+        <li>面：1 个面、1200.00 mm²、包围盒 40×0×30</li>
+        <li>加厚后：6 个面、40×3×30、<span class="num">2820.00 mm²</span></li>
+        <li>装配：根零件 3 → 2（1 个进组件）→ 搬回 3</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>90° 弯管流域</h3>
+      <p class="sub" style="margin:0 0 8px">真圆截面弯头 + 两段直管拼成一个体</p>
+      <ul>
+        <li>1 个体、7 个面</li>
+        <li>inlet / outlet 各 <span class="num">78.54 mm²</span></li>
+        <li>bend_wall <span class="num">1449.95 mm²</span>、wall 4 面</li>
+      </ul>
+    </div>
+    <div class="card" style="border-color:#c46b3a">
+      <h3>PCHE · 一层冷 + 一层热（D 形通道）</h3>
+      <p class="sub" style="margin:0 0 8px">半圆槽式 D 形通道，流向沿 x、平边朝上，长 100mm；固体域 = 刻槽板 + 盖板</p>
+      <ul>
+        <li><b>5 个体</b>：固体 14 面 · 4 条流体各 4 面 · 9 个 zone</li>
+        <li>D 形截面 1.5708 mm² · 湿周 5.1416 mm · <b>Dh = 1.2220 mm</b></li>
+        <li>hot / cold 交界面各 4 对，两侧各 <span class="num">1028.32 mm²</span>，balanced=True</li>
+        <li>冷热之间只剩 <b>0.6 mm</b> 换热薄壁；固体体积 1955.68 mm³</li>
+        <li><code>cht_check ok=True</code>；热↔冷正确判为不接触</li>
+      </ul>
+    </div>    <div class="card" style="border-color:#7a5cc4">
+      <h3>5×5 核反应堆燃料组件流动通道</h3>
+      <p class="sub" style="margin:0 0 8px">棒径 10 / 栅距 15（P/D=1.5）/ 25 根 / 长 3000mm；通道截面按对称面约定取 5×栅距 = 75×75</p>
+      <ul>
+        <li>1 个体、<b>31 面</b>（6 平面 + 25 圆柱面）、4 个 zone</li>
+        <li><code>inlet</code>（底面）/ <code>outlet</code>（顶面）各 <span class="num">3661.50 mm²</span></li>
+        <li><code>wall-heated</code>（25 根棒表面）<span class="num">2356194.49 mm² = 2.3562 m²</span></li>
+        <li><code>sym</code>（四周 4 面）<span class="num">900000 mm² = 0.9 m²</span></li>
+        <li>流通面积 <span class="num">3661.50 mm²</span> · 湿周 1085.40 mm · <b>Dh = 13.4937 mm</b></li>
+      </ul>
+    </div>    <div class="card" style="border-color:#2f6b52">
+      <h3>带折流板的四层 CHT</h3>
+      <p class="sub" style="margin:0 0 8px">壳程流体 100×50×40 + 2 块折流板固体 + 12 根管壁 + 12 根管程流体（折流板上的管孔是同一轮 cut 挖穿的）</p>
+      <ul>
+        <li><b>27 个体、14 个 zone</b>，<code>cht_check ok=True</code></li>
+        <li>自动判定 4 组相接：壳程↔折流板 6 对 · 壳程↔管壁 <b>3 整 + 18 分段</b> · 折流板↔管壁 9 分段 · 管壁↔管程 12 对</li>
+        <li>管孔壁总长 <span class="num">1182 mm</span> = 12×100 − 18，面积 <span class="num">37133.63</span> 与手算逐位相等</li>
+        <li>正确判定<b>壳程↔管程不接触</b>（中间隔着管壁）</li>
+      </ul>
+    </div>    <div class="card" style="border-color:#2f6b52">
+      <h3>共轭传热三层模型（CHT）</h3>
+      <p class="sub" style="margin:0 0 8px">壳程流体 100×50×40 + 12 根管壁固体（外 r5 / 内 r4）+ 管程流体 12 根 r4</p>
+      <ul>
+        <li><b>25 个体、10 个 zone</b>，无残留刀具体</li>
+        <li>shell_tube_a/b 各 12 面，两侧各 <span class="num">37699.11 mm²</span></li>
+        <li>tube_fluid_a/b 各 12 面，两侧各 <span class="num">30159.29 mm²</span></li>
+        <li>两处交界面 <code>balanced=True</code>，面积与手算逐位相等</li>
+        <li>shell_inlet <span class="num">1057.52</span> = 50·40 − 12π·5²</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>三、踩出来的坑（每条都有实测数字）</h2>
+  <table>
+    <tr><th style="width:210px">坑</th><th>表现与结论</th></tr>
+    <tr><td><span class="bad">倒圆角只吃"边"</span></td>
+      <td>传面报 StandardError、传体报 ValueError。失败信息是<b>中文</b>的，会让宿主静默中止整个脚本 → 库里统一转成 ASCII 的 RuntimeError。命令的 <code>Success</code> 也不可信（实测创建面数是 0）。</td></tr>
+    <tr><td><span class="bad">官方 Pattern 把体搬进组件</span></td>
+      <td>4 个线性阵列后 <code>GetRootPart().Bodies</code> 从 1 变 <b>0</b>、<code>Components</code> 变 <b>1</b>，命名与校验全失效 → 阵列改用 <code>Copy.Execute</code> + 平移/旋转。方向选择还只认真实几何（传 <code>Line</code> 直接 <code>Collection is empty</code>）。</td></tr>
+    <tr><td><span class="bad">cutter 相切时静默失效</span></td>
+      <td>3×3 管束，圆心到壁面距离正好等于半径 → 9 根里只挖出 <b>4</b> 根，不报错。管子必须完全落在域内。</td></tr>
+    <tr><td><span class="bad">挖料后墙面的法向</span></td>
+      <td><code>cut=True</code> 挖出的空腔：x 小的一侧墙面外法向是 <b>+X</b>（背离实体）、腔顶是 <b>−Z</b>。写反 → 那条规则一张都匹配不到，还会被后面的规则吃掉（实测 <code>inlet</code> 吃到 3 张面 <span class="num">3042.83</span> = 进口 1396.81 + 两块折流板 823.01×2）。</td></tr>
+    <tr><td><span class="bad">曲面加厚会替换掉原面体</span></td>
+      <td>旧的体对象随即失效（取 <code>Faces</code> 抛 <code>The object is deleted.</code>），新体还会丢名字 → 必须接返回值 <code>plate = thicken(plate, …)</code>。</td></tr>
+    <tr><td><span class="bad">空组件会弄坏命名选择</span></td>
+      <td>体搬走后留下的空组件会让 <code>NamedSelection.GetGroups()</code> 抛中文空引用 → 必须 <code>drop_empty_components()</code>。</td></tr>
+    <tr><td><span class="bad">verify 曾经"假绿"</span></td>
+      <td>老版 <code>verify_model.py</code> 无论成功失败都打成功哨兵，上面那种异常被静默吞掉。现在失败打 <code>&lt;&lt;&lt;SCDM_VERIFY_FAILED&gt;&gt;&gt;</code>，运行器据此判失败。</td></tr>
+    <tr><td><span class="bad">布尔刀贴着/切着目标</span></td>
+      <td>三种表现，全都是<b>静默</b>的：① 刀与壁面相切 → `cut=True` 不生效（3×3 管束 9 根只挖出 4 根）；② 刀的端面与目标体端面<b>共面</b> → 布尔失败并留下一个实体刀具体（壳体面数不变、多出 3 个面的未命名圆柱）；③ 管间距 = 2×半径（相邻管外切）→ 12 次挖孔只成功 1 次、留下 11 个刀具体。<b>刀要出头、孔要互相分开。</b></td></tr>
+    <tr><td><span class="bad">CHT 分层被并集吃掉</span></td>
+      <td>管外表面与壳程孔壁尺寸完全相同 → 默认并集把管子吃进孔壁（实测 12 根建完只剩 1 个管状体）。共轭传热里管壁必须 <code>tube(..., separate=True)</code>。</td></tr>
+    <tr><td><span class="bad">逐根建同名 zone</span></td>
+      <td>对 12 根管子各调一次 <code>name_faces_by_rules(t, [("tube_wall_end", …)])</code> → 12 组同名命名选择 → <code>NamedSelection.GetGroups()</code> <b>宿主级崩溃</b>。正确做法：先把面收集成一个列表，最后 <code>name_faces("tube_wall_end", faces)</code> 命名一次。</td></tr>
+    <tr><td><span class="bad">折流板切开管孔壁</span></td>
+      <td>管束里插了折流板后，壳程那侧的管孔壁被切成几段，整面面积对不上 → 自动配对会是 <b>0</b>。要开 <code>allow_split=True</code>（小面被大面包住）。判定圆柱时<b>不能读 <code>Geometry.Radius</code>/<code>Frame</code></b>：取不到时会静默 except 掉、整条判定永远 False（第一版 18 段一段都没配上），改用包围盒截面尺寸比对。</td></tr>
+    <tr><td><span class="bad">折流板边缘压在管排上</span></td>
+      <td>边缘正好落在管排中心线时会切出 4 片 2~11 mm² 的碎面（壳体面数 6→14）。把折流板边缘放进管排之间的空档即可。</td></tr>
+    <tr><td><span class="bad">忘了 cut 是全局的</span></td>
+      <td><code>cut=True</code> 切文档里<b>所有</b>体。带折流板的四层模型有严格顺序：建壳 → 挖折流板槽 → 塞折流板 → 这一轮挖管孔同时穿透壳与折流板 → 最后才建管壁和管程流体。</td></tr>
+    <tr><td><span class="warn">Sweep 用不了</span></td>
+      <td>草图曲线路径、实体边路径、直边、圆边、两个开关取值全试过：不是"面数不变"就是 <code>Success=False</code>。弯管改用 <code>elbow()</code>（草图圆 + 回转）。</td></tr>
+    <tr><td><span class="warn">没有"实体减实体"</span></td>
+      <td><code>Combine.Merge</code> 实测是<b>并集</b>；<code>MergeBodies</code> 报错；贴着的体在建的时候已自动并成一个。要挖料只能在建料时 <code>cut=True</code>。</td></tr>
+    <tr><td><span class="warn">Midsurface / Fill 无效</span></td>
+      <td><code>Midsurface.Convert</code> 与 <code>Fill.Execute</code> 都返回 <code>Success=True</code> 但几何毫无变化。</td></tr>
+    <tr><td><span class="ok">必须遵守的顺序</span></td>
+      <td>① 草图类几何（<code>profile_prisms</code> / <code>revolve_*</code> / <code>elbow</code>）必须最先建；② 先倒角/抽壳、后命名；③ 先搬回根零件、再命名；④ 命名完再删空组件。</td></tr>
+  </table>
+
+  <h2>四、怎么用</h2>
+<pre>&gt; &lt;skill&gt;\scripts\smoke_examples.ps1          # 一条命令跑完全部 5 个示例，打印对照表
+&gt; &lt;skill&gt;\scripts\Invoke-Scdm.ps1 -Script 你的模型.py -Out 你的模型.scdocx -Verify</pre>
+<pre>Example              Status Bodies Zones Faces Seconds
+tube_bank_demo       ok     1      8     44       41.8
+pin_fin_demo         ok     1      7     86       40.7
+surface_asm_demo     ok     3      3     6        40.8
+bend90_demo          ok     1      4     7        41.4
+cht_tube_bundle_demo ok     25     10    18       41.2
+cht_baffled_demo     ok     27     14    35       43.1
+fuel_assembly_5x5    ok     1      4     31       39.2
+pche_demo            ok     5      9     14       41.0
+total 8, failed 0</pre>
+<pre>body = box(4.0, 4.0, 10.0, origin=(0, 0, 0), name="Channel")
+round_edges(edges_parallel(body, "z"), 1.0)          # 四条长边倒圆 r=1
+name_faces_by_rules(body, [
+    ("inlet",       {"normal": "z", "sign": -1}),
+    ("outlet",      {"normal": "z", "sign": +1}),
+    ("fillet_wall", {"kind": "cylinder"}),
+    ("wall",        {"rest": True}),
+])
+finish(r"channel.scdocx", body)</pre>
+  <p>判定成功靠脚本里的哨兵 <code>&lt;&lt;&lt;SCDM_OK&gt;&gt;&gt;</code>（SpaceClaim 脚本抛异常时退出码也是 0）；<code>-Verify</code> 会<b>另开一个全新会话、从磁盘重新打开产物</b>，回读尺寸、面/边统计和每个命名选择的面心与面积。建模脚本自己打印的东西不算证据。</p>
+
+  <h2>五、仓库</h2>
+  <table>
+    <tr><th style="width:320px">仓库</th><th>内容</th></tr>
+    <tr><td><code>fusion-whale/spaceclaim-modeling</code></td><td>独立工具包：<code>SKILL.md</code> + <code>scripts/</code> + <code>references/api-notes.md</code> + 19 个回归用例 + 4 个示例</td></tr>
+    <tr><td><code>fusion-whale/dsh-preset-spaceclaim</code></td><td>DSH 预设：技能 + 原生工具 <code>scdm_build</code>，装完在预设选择器里选「SpaceClaim 建模」</td></tr>
+  </table>
+  <p class="sub" id="rev">仓库 HEAD：<code>spaceclaim-modeling</code> = <code>e54ab0a</code>（推送后远端 <code>3548e11d</code>，tree <code>f32ac4e620c1</code> 与本地一致）；
+    <code>dsh-preset-spaceclaim</code> = <code>1f5fe32</code>（推送后远端 <code>da6785a2</code>，tree <code>4f6630e44058</code> 与本地一致）。
+    两边工作区都干净，本机已安装的 skill 与预设已同步（关键文件 SHA256 逐一致）。</p>
+
+  <footer>
+    所有数字来自真实运行，可在各仓库的 <code>tests/</code> 与 <code>examples/</code> 里用
+    <code>-Verify</code> 复现。负面结论（哪些 API 不能用、失败报什么错）集中在
+    <code>references/api-notes.md</code>。
+  </footer>
+</div>
+</body>
+</html>

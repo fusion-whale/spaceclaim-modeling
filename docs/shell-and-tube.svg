@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1420" height="900" viewBox="0 0 1420 900">
+<style>text{font-family:"Segoe UI","Microsoft YaHei",sans-serif}.t{fill:#e6ebf1}.m{fill:#93a1b0;font-size:13px}.ttl{fill:#e6ebf1;font-size:18px;font-weight:600}.lead{stroke:#4cc2ff;stroke-width:1;fill:none;stroke-dasharray:4 3}.dim{stroke:#ffb454;stroke-width:1.1;fill:none}.dimt{fill:#ffb454;font-size:12.5px}</style>
+<rect width="1420" height="900" fill="#0f1216"/>
+<defs><marker id="ar" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#3ddc97"/></marker></defs>
+<text x="90" y="52" class="ttl">A · 纵剖面（沿流向切开，看到 4 排管 + 2 块弓形折流板）</text>
+<text x="90" y="76" class="m">壳程流域 100 × 50 × 40 mm · 12 根管（外 r5 / 内 r4）栅距 12 · 折流板厚 2</text>
+<rect x="90.0" y="150.0" width="540.0" height="270.0" fill="#14202b" stroke="#4cc2ff" stroke-width="2.6"/>
+<rect x="90.0" y="360.6" width="540.0" height="54.0" fill="#ffb454" fill-opacity="0.80" stroke="#8a5a12" stroke-width="1"/>
+<rect x="90.0" y="366.0" width="540.0" height="43.2" fill="#3ddc97" fill-opacity="0.55"/>
+<rect x="90.0" y="295.8" width="540.0" height="54.0" fill="#ffb454" fill-opacity="0.80" stroke="#8a5a12" stroke-width="1"/>
+<rect x="90.0" y="301.2" width="540.0" height="43.2" fill="#3ddc97" fill-opacity="0.55"/>
+<rect x="90.0" y="231.0" width="540.0" height="54.0" fill="#ffb454" fill-opacity="0.80" stroke="#8a5a12" stroke-width="1"/>
+<rect x="90.0" y="236.4" width="540.0" height="43.2" fill="#3ddc97" fill-opacity="0.55"/>
+<rect x="90.0" y="166.2" width="540.0" height="54.0" fill="#ffb454" fill-opacity="0.80" stroke="#8a5a12" stroke-width="1"/>
+<rect x="90.0" y="171.6" width="540.0" height="43.2" fill="#3ddc97" fill-opacity="0.55"/>
+<rect x="252.0" y="290.4" width="10.8" height="129.6" fill="#8a93a0" fill-opacity="0.85" stroke="#c8d3de" stroke-width="1"/>
+<rect x="414.0" y="150.0" width="10.8" height="75.6" fill="#8a93a0" fill-opacity="0.85" stroke="#c8d3de" stroke-width="1"/>
+<line x1="100.8" y1="182.4" x2="230.4" y2="182.4" stroke="#3ddc97" stroke-width="2.2" marker-end="url(#ar)"/>
+<line x1="230.4" y1="193.2" x2="230.4" y2="241.8" stroke="#3ddc97" stroke-width="2.2" marker-end="url(#ar)"/>
+<line x1="241.2" y1="241.8" x2="392.4" y2="241.8" stroke="#3ddc97" stroke-width="2.2" marker-end="url(#ar)"/>
+<line x1="392.4" y1="252.6" x2="392.4" y2="312.0" stroke="#3ddc97" stroke-width="2.2" marker-end="url(#ar)"/>
+<line x1="403.2" y1="312.0" x2="608.4" y2="312.0" stroke="#3ddc97" stroke-width="2.2" marker-end="url(#ar)"/>
+<text x="82.0" y="187.4" class="t" font-size="13.5" text-anchor="end">shell_inlet</text>
+<text x="638.0" y="317.0" class="t" font-size="13.5">shell_outlet</text>
+<circle cx="656.0" cy="174.0" r="7" fill="#ffb454" fill-opacity="0.85"/>
+<text x="672.0" y="179.0" class="t" font-size="13.5">管壁固体 tube_wall（12 根）</text>
+<circle cx="656.0" cy="202.0" r="7" fill="#3ddc97" fill-opacity="0.7"/>
+<text x="672.0" y="207.0" class="t" font-size="13.5">管程流体 tube_fluid（12 根）</text>
+<rect x="649.0" y="223.0" width="14" height="14" fill="#8a93a0" stroke="#c8d3de"/>
+<text x="672.0" y="235.0" class="t" font-size="13.5">折流板固体 baffle_solid（2 块）</text>
+<text x="649.0" y="266.0" class="m">蓝色边框 = 壳程流体域外壳</text>
+<line class="dim" x1="90.0" y1="454.0" x2="630.0" y2="454.0"/>
+<text x="360.0" y="471.0" class="dimt" text-anchor="middle">流向 x = 100</text>
+<line class="dim" x1="56.0" y1="150.0" x2="56.0" y2="420.0"/>
+<text x="50.0" y="285.0" class="dimt" text-anchor="middle" transform="rotate(-90 50.0 285.0)">50</text>
+<text x="970" y="52" class="ttl">B · 端面（沿流向看进去）</text>
+<text x="970" y="76" class="m">50 × 40 的截面上 12 个管孔</text>
+<rect x="1010.0" y="190.0" width="250.0" height="200.0" fill="#14202b" stroke="#4cc2ff" stroke-width="2.4"/>
+<circle cx="1040.0" cy="360.0" r="25.0" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12"/>
+<circle cx="1040.0" cy="360.0" r="20.0" fill="#3ddc97" fill-opacity="0.6"/>
+<circle cx="1100.0" cy="360.0" r="25.0" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12"/>
+<circle cx="1100.0" cy="360.0" r="20.0" fill="#3ddc97" fill-opacity="0.6"/>
+<circle cx="1160.0" cy="360.0" r="25.0" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12"/>
+<circle cx="1160.0" cy="360.0" r="20.0" fill="#3ddc97" fill-opacity="0.6"/>
+<circle cx="1040.0" cy="300.0" r="25.0" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12"/>
+<circle cx="1040.0" cy="300.0" r="20.0" fill="#3ddc97" fill-opacity="0.6"/>
+<circle cx="1100.0" cy="300.0" r="25.0" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12"/>
+<circle cx="1100.0" cy="300.0" r="20.0" fill="#3ddc97" fill-opacity="0.6"/>
+<circle cx="1160.0" cy="300.0" r="25.0" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12"/>
+<circle cx="1160.0" cy="300.0" r="20.0" fill="#3ddc97" fill-opacity="0.6"/>
+<circle cx="1040.0" cy="240.0" r="25.0" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12"/>
+<circle cx="1040.0" cy="240.0" r="20.0" fill="#3ddc97" fill-opacity="0.6"/>
+<circle cx="1100.0" cy="240.0" r="25.0" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12"/>
+<circle cx="1100.0" cy="240.0" r="20.0" fill="#3ddc97" fill-opacity="0.6"/>
+<circle cx="1160.0" cy="240.0" r="25.0" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12"/>
+<circle cx="1160.0" cy="240.0" r="20.0" fill="#3ddc97" fill-opacity="0.6"/>
+<circle cx="1040.0" cy="180.0" r="25.0" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12"/>
+<circle cx="1040.0" cy="180.0" r="20.0" fill="#3ddc97" fill-opacity="0.6"/>
+<circle cx="1100.0" cy="180.0" r="25.0" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12"/>
+<circle cx="1100.0" cy="180.0" r="20.0" fill="#3ddc97" fill-opacity="0.6"/>
+<circle cx="1160.0" cy="180.0" r="25.0" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12"/>
+<circle cx="1160.0" cy="180.0" r="20.0" fill="#3ddc97" fill-opacity="0.6"/>
+<text x="970.0" y="416.0" class="m">壳程流体从这里进 / 出（12 个管孔位）</text>
+<text x="90" y="700" class="ttl">C · 三个版本（都在examples/里，都跑过独立校验）</text>
+<text x="90" y="726.0" fill="#4cc2ff" font-size="13.5">tube_bank_demo</text>
+<text x="290" y="726.0" class="t" font-size="13">壳程流体域：12 管孔 + 2 折流板槽</text>
+<text x="680" y="726.0" fill="#3ddc97" font-size="13">1 个体 · 44 面 · 8 个 zone</text>
+<text x="900" y="726.0" class="m">e1749d…</text>
+<text x="90" y="752.0" fill="#4cc2ff" font-size="13.5">cht_tube_bundle_demo</text>
+<text x="290" y="752.0" class="t" font-size="13">三层 CHT：壳程流体 + 12 管壁 + 管程流体</text>
+<text x="680" y="752.0" fill="#3ddc97" font-size="13">25 个体 · 10 个 zone</text>
+<text x="900" y="752.0" class="m">两处交界面各 12 对，面积 37699.11 / 30159.29</text>
+<text x="90" y="778.0" fill="#4cc2ff" font-size="13.5">cht_baffled_demo</text>
+<text x="290" y="778.0" class="t" font-size="13">四层 CHT：再加 2 块折流板固体（带管孔）</text>
+<text x="680" y="778.0" fill="#3ddc97" font-size="13">27 个体 · 14 个 zone</text>
+<text x="900" y="778.0" class="m">自动判出 4 组相接，管孔壁 37133.63 与手算逐位相等</text>
+<text x="90" y="874" class="m">模型目录：E:\dsh\test\scdm_work\examples\　·　预览图：shell_tube_preview.svg</text>
+</svg>

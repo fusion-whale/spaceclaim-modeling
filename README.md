@@ -4,6 +4,14 @@
 
 > Drive Ansys SpaceClaim headlessly from the command line: build geometry, fillet/chamfer it, and name boundary zones from a short Python script, then verify the saved `.scdocx` by re-reading it in a fresh session. Docs are in Chinese.
 
+> ### 👉 第一次来，直接读 [`HANDOFF.md`](HANDOFF.md)
+> 一份**自包含的能力交接书**：全部实测基线、**15 条踩坑总表**（每条带实测数字）、
+> "哪些 API 在这个版本不能用"的确定性结论、8 个示例模型的数值、以及怎么自己再扩能力。
+> 读完那一份就能上手，不用翻别处。
+>
+> - 想直接看东西：[`docs/`](docs/) 里有 4 张效果图 + 一份能力汇报页
+> - 想直接打开模型：[`samples/`](samples/) 里有 8 个已校验的 `.scdocx`（不用跑脚本）
+
 ```python
 body = box(4.0, 4.0, 10.0, origin=(0, 0, 0), name="Channel")
 round_edges(edges_parallel(body, "z"), 1.0)          # 四条长边倒圆 r=1

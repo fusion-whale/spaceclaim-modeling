@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="780" viewBox="0 0 1400 780">
+<style>text{font-family:"Segoe UI","Microsoft YaHei",sans-serif}.t{fill:#e6ebf1}.m{fill:#93a1b0;font-size:13px}.ttl{fill:#e6ebf1;font-size:19px;font-weight:600}.dim{stroke:#ffb454;stroke-width:1.2;fill:none}.dimt{fill:#ffb454;font-size:13px}.lead{stroke:#4cc2ff;stroke-width:1;fill:none;stroke-dasharray:4 3}</style>
+<rect width="1400" height="780" fill="#0f1216"/>
+<text x="70" y="52" class="ttl">A · 通道截面（75 mm × 75 mm，5×5 棒束）</text>
+<text x="70" y="76" class="m">棒径 10 mm · 栅距 15 mm · P/D = 1.50 · 棒心 7.5/22.5/37.5/52.5/67.5</text>
+<rect x="70.00" y="120.00" width="630.00" height="630.00" fill="#14202b" stroke="#4cc2ff" stroke-width="3"/>
+<line x1="196.00" y1="120.00" x2="196.00" y2="750.00" stroke="#2b4a5e" stroke-width="1" stroke-dasharray="6 5"/>
+<line x1="70.00" y1="246.00" x2="700.00" y2="246.00" stroke="#2b4a5e" stroke-width="1" stroke-dasharray="6 5"/>
+<line x1="322.00" y1="120.00" x2="322.00" y2="750.00" stroke="#2b4a5e" stroke-width="1" stroke-dasharray="6 5"/>
+<line x1="70.00" y1="372.00" x2="700.00" y2="372.00" stroke="#2b4a5e" stroke-width="1" stroke-dasharray="6 5"/>
+<line x1="448.00" y1="120.00" x2="448.00" y2="750.00" stroke="#2b4a5e" stroke-width="1" stroke-dasharray="6 5"/>
+<line x1="70.00" y1="498.00" x2="700.00" y2="498.00" stroke="#2b4a5e" stroke-width="1" stroke-dasharray="6 5"/>
+<line x1="574.00" y1="120.00" x2="574.00" y2="750.00" stroke="#2b4a5e" stroke-width="1" stroke-dasharray="6 5"/>
+<line x1="70.00" y1="624.00" x2="700.00" y2="624.00" stroke="#2b4a5e" stroke-width="1" stroke-dasharray="6 5"/>
+<circle cx="133.00" cy="183.00" r="42.00" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1.4"/>
+<circle cx="259.00" cy="183.00" r="42.00" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1.4"/>
+<circle cx="385.00" cy="183.00" r="42.00" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1.4"/>
+<circle cx="511.00" cy="183.00" r="42.00" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1.4"/>
+<circle cx="637.00" cy="183.00" r="42.00" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1.4"/>
+<circle cx="133.00" cy="309.00" r="42.00" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1.4"/>
+<circle cx="259.00" cy="309.00" r="42.00" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1.4"/>
+<circle cx="385.00" cy="309.00" r="42.00" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1.4"/>
+<circle cx="511.00" cy="309.00" r="42.00" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1.4"/>
+<circle cx="637.00" cy="309.00" r="42.00" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1.4"/>
+<circle cx="133.00" cy="435.00" r="42.00" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1.4"/>
+<circle cx="259.00" cy="435.00" r="42.00" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1.4"/>
+<circle cx="385.00" cy="435.00" r="42.00" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1.4"/>
+<circle cx="511.00" cy="435.00" r="42.00" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1.4"/>
+<circle cx="637.00" cy="435.00" r="42.00" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1.4"/>
+<circle cx="133.00" cy="561.00" r="42.00" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1.4"/>
+<circle cx="259.00" cy="561.00" r="42.00" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1.4"/>
+<circle cx="385.00" cy="561.00" r="42.00" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1.4"/>
+<circle cx="511.00" cy="561.00" r="42.00" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1.4"/>
+<circle cx="637.00" cy="561.00" r="42.00" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1.4"/>
+<circle cx="133.00" cy="687.00" r="42.00" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1.4"/>
+<circle cx="259.00" cy="687.00" r="42.00" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1.4"/>
+<circle cx="385.00" cy="687.00" r="42.00" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1.4"/>
+<circle cx="511.00" cy="687.00" r="42.00" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1.4"/>
+<circle cx="637.00" cy="687.00" r="42.00" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1.4"/>
+<line class="dim" x1="133.00" y1="94.00" x2="259.00" y2="94.00"/>
+<line class="dim" x1="133.00" y1="89.00" x2="133.00" y2="141.00"/>
+<line class="dim" x1="259.00" y1="89.00" x2="259.00" y2="141.00"/>
+<text x="196.00" y="84.00" class="dimt" text-anchor="middle">栅距 15</text>
+<line class="dim" x1="595.00" y1="759.00" x2="679.00" y2="759.00"/>
+<text x="637.00" y="776.00" class="dimt" text-anchor="middle">棒径 10</text>
+<circle cx="770.00" cy="130.00" r="7" fill="#ffb454" fill-opacity="0.85"/>
+<text x="786.00" y="135.00" class="t" font-size="14">wall-heated（25 面）</text>
+<text x="786.00" y="154.00" class="m">发热棒表面，25 面 · 2.3562 m²</text>
+<line x1="770.00" y1="178.00" x2="784.00" y2="178.00" stroke="#4cc2ff" stroke-width="3"/>
+<text x="786.00" y="183.00" class="t" font-size="14">sym（4 面）</text>
+<text x="786.00" y="202.00" class="m">四周侧壁＝对称面 · 0.9 m²</text>
+<circle cx="770.00" cy="238.00" r="7" fill="none" stroke="#3ddc97" stroke-width="3"/>
+<text x="786.00" y="243.00" class="t" font-size="14">inlet / outlet（各 1 面）</text>
+<text x="786.00" y="262.00" class="m">底面 z=0 / 顶面 z=3000 · 各 3661.50 mm²</text>
+<rect x="70.00" y="812.00" width="630.00" height="118.00" rx="8" fill="#171c22" stroke="#2b333d"/>
+<text x="86.00" y="842.00" class="t" font-size="13.5">流通面积 A</text>
+<text x="280.00" y="842.00" fill="#3ddc97" font-size="13.5">3661.50 mm²  =  36.615 cm²</text>
+<text x="86.00" y="872.00" class="t" font-size="13.5">湿周 P</text>
+<text x="280.00" y="872.00" fill="#3ddc97" font-size="13.5">1085.40 mm</text>
+<text x="86.00" y="902.00" class="t" font-size="13.5">水力直径 Dh = 4A/P</text>
+<text x="280.00" y="902.00" fill="#3ddc97" font-size="13.5">13.4937 mm</text>
+<text x="700" y="52" class="ttl">B · 轴测（长度方向压缩显示，实际 3000 mm）</text>
+<text x="700" y="76" class="m">25 根棒沿 z 贯穿；底面 inlet、顶面 outlet；四周 sym</text>
+<polygon points="1080.00,668.00 1114.64,688.00 1080.00,708.00 1045.36,688.00" fill="#14202b" stroke="#4cc2ff" stroke-width="2.4"/>
+<path d="M 1083.27 704.00 A 3.27 1.89 0 0 1 1076.73 704.00 L 1076.73 144.00 A 3.27 1.89 0 0 1 1083.27 144.00 Z" fill="#c88a35" stroke="#8a5a12" stroke-width="1"/>
+<ellipse cx="1080.00" cy="144.00" rx="3.27" ry="1.89" fill="#ffb454" stroke="#8a5a12" stroke-width="1"/>
+<path d="M 1090.19 700.00 A 3.27 1.89 0 0 1 1083.66 700.00 L 1083.66 140.00 A 3.27 1.89 0 0 1 1090.19 140.00 Z" fill="#c88a35" stroke="#8a5a12" stroke-width="1"/>
+<ellipse cx="1086.93" cy="140.00" rx="3.27" ry="1.89" fill="#ffb454" stroke="#8a5a12" stroke-width="1"/>
+<path d="M 1076.34 700.00 A 3.27 1.89 0 0 1 1069.81 700.00 L 1069.81 140.00 A 3.27 1.89 0 0 1 1076.34 140.00 Z" fill="#c88a35" stroke="#8a5a12" stroke-width="1"/>
+<ellipse cx="1073.07" cy="140.00" rx="3.27" ry="1.89" fill="#ffb454" stroke="#8a5a12" stroke-width="1"/>
+<path d="M 1097.12 696.00 A 3.27 1.89 0 0 1 1090.59 696.00 L 1090.59 136.00 A 3.27 1.89 0 0 1 1097.12 136.00 Z" fill="#c88a35" stroke="#8a5a12" stroke-width="1"/>
+<ellipse cx="1093.86" cy="136.00" rx="3.27" ry="1.89" fill="#ffb454" stroke="#8a5a12" stroke-width="1"/>
+<path d="M 1083.27 696.00 A 3.27 1.89 0 0 1 1076.73 696.00 L 1076.73 136.00 A 3.27 1.89 0 0 1 1083.27 136.00 Z" fill="#c88a35" stroke="#8a5a12" stroke-width="1"/>
+<ellipse cx="1080.00" cy="136.00" rx="3.27" ry="1.89" fill="#ffb454" stroke="#8a5a12" stroke-width="1"/>
+<path d="M 1069.41 696.00 A 3.27 1.89 0 0 1 1062.88 696.00 L 1062.88 136.00 A 3.27 1.89 0 0 1 1069.41 136.00 Z" fill="#c88a35" stroke="#8a5a12" stroke-width="1"/>
+<ellipse cx="1066.14" cy="136.00" rx="3.27" ry="1.89" fill="#ffb454" stroke="#8a5a12" stroke-width="1"/>
+<path d="M 1104.05 692.00 A 3.27 1.89 0 0 1 1097.52 692.00 L 1097.52 132.00 A 3.27 1.89 0 0 1 1104.05 132.00 Z" fill="#c88a35" stroke="#8a5a12" stroke-width="1"/>
+<ellipse cx="1100.78" cy="132.00" rx="3.27" ry="1.89" fill="#ffb454" stroke="#8a5a12" stroke-width="1"/>
+<path d="M 1090.19 692.00 A 3.27 1.89 0 0 1 1083.66 692.00 L 1083.66 132.00 A 3.27 1.89 0 0 1 1090.19 132.00 Z" fill="#c88a35" stroke="#8a5a12" stroke-width="1"/>
+<ellipse cx="1086.93" cy="132.00" rx="3.27" ry="1.89" fill="#ffb454" stroke="#8a5a12" stroke-width="1"/>
+<path d="M 1076.34 692.00 A 3.27 1.89 0 0 1 1069.81 692.00 L 1069.81 132.00 A 3.27 1.89 0 0 1 1076.34 132.00 Z" fill="#c88a35" stroke="#8a5a12" stroke-width="1"/>
+<ellipse cx="1073.07" cy="132.00" rx="3.27" ry="1.89" fill="#ffb454" stroke="#8a5a12" stroke-width="1"/>
+<path d="M 1062.48 692.00 A 3.27 1.89 0 0 1 1055.95 692.00 L 1055.95 132.00 A 3.27 1.89 0 0 1 1062.48 132.00 Z" fill="#c88a35" stroke="#8a5a12" stroke-width="1"/>
+<ellipse cx="1059.22" cy="132.00" rx="3.27" ry="1.89" fill="#ffb454" stroke="#8a5a12" stroke-width="1"/>
+<path d="M 1110.98 688.00 A 3.27 1.89 0 0 1 1104.45 688.00 L 1104.45 128.00 A 3.27 1.89 0 0 1 1110.98 128.00 Z" fill="#c88a35" stroke="#8a5a12" stroke-width="1"/>
+<ellipse cx="1107.71" cy="128.00" rx="3.27" ry="1.89" fill="#ffb454" stroke="#8a5a12" stroke-width="1"/>
+<path d="M 1097.12 688.00 A 3.27 1.89 0 0 1 1090.59 688.00 L 1090.59 128.00 A 3.27 1.89 0 0 1 1097.12 128.00 Z" fill="#c88a35" stroke="#8a5a12" stroke-width="1"/>
+<ellipse cx="1093.86" cy="128.00" rx="3.27" ry="1.89" fill="#ffb454" stroke="#8a5a12" stroke-width="1"/>
+<path d="M 1083.27 688.00 A 3.27 1.89 0 0 1 1076.73 688.00 L 1076.73 128.00 A 3.27 1.89 0 0 1 1083.27 128.00 Z" fill="#c88a35" stroke="#8a5a12" stroke-width="1"/>
+<ellipse cx="1080.00" cy="128.00" rx="3.27" ry="1.89" fill="#ffb454" stroke="#8a5a12" stroke-width="1"/>
+<path d="M 1069.41 688.00 A 3.27 1.89 0 0 1 1062.88 688.00 L 1062.88 128.00 A 3.27 1.89 0 0 1 1069.41 128.00 Z" fill="#c88a35" stroke="#8a5a12" stroke-width="1"/>
+<ellipse cx="1066.14" cy="128.00" rx="3.27" ry="1.89" fill="#ffb454" stroke="#8a5a12" stroke-width="1"/>
+<path d="M 1055.55 688.00 A 3.27 1.89 0 0 1 1049.02 688.00 L 1049.02 128.00 A 3.27 1.89 0 0 1 1055.55 128.00 Z" fill="#c88a35" stroke="#8a5a12" stroke-width="1"/>
+<ellipse cx="1052.29" cy="128.00" rx="3.27" ry="1.89" fill="#ffb454" stroke="#8a5a12" stroke-width="1"/>
+<path d="M 1104.05 684.00 A 3.27 1.89 0 0 1 1097.52 684.00 L 1097.52 124.00 A 3.27 1.89 0 0 1 1104.05 124.00 Z" fill="#c88a35" stroke="#8a5a12" stroke-width="1"/>
+<ellipse cx="1100.78" cy="124.00" rx="3.27" ry="1.89" fill="#ffb454" stroke="#8a5a12" stroke-width="1"/>
+<path d="M 1090.19 684.00 A 3.27 1.89 0 0 1 1083.66 684.00 L 1083.66 124.00 A 3.27 1.89 0 0 1 1090.19 124.00 Z" fill="#c88a35" stroke="#8a5a12" stroke-width="1"/>
+<ellipse cx="1086.93" cy="124.00" rx="3.27" ry="1.89" fill="#ffb454" stroke="#8a5a12" stroke-width="1"/>
+<path d="M 1076.34 684.00 A 3.27 1.89 0 0 1 1069.81 684.00 L 1069.81 124.00 A 3.27 1.89 0 0 1 1076.34 124.00 Z" fill="#c88a35" stroke="#8a5a12" stroke-width="1"/>
+<ellipse cx="1073.07" cy="124.00" rx="3.27" ry="1.89" fill="#ffb454" stroke="#8a5a12" stroke-width="1"/>
+<path d="M 1062.48 684.00 A 3.27 1.89 0 0 1 1055.95 684.00 L 1055.95 124.00 A 3.27 1.89 0 0 1 1062.48 124.00 Z" fill="#c88a35" stroke="#8a5a12" stroke-width="1"/>
+<ellipse cx="1059.22" cy="124.00" rx="3.27" ry="1.89" fill="#ffb454" stroke="#8a5a12" stroke-width="1"/>
+<path d="M 1097.12 680.00 A 3.27 1.89 0 0 1 1090.59 680.00 L 1090.59 120.00 A 3.27 1.89 0 0 1 1097.12 120.00 Z" fill="#c88a35" stroke="#8a5a12" stroke-width="1"/>
+<ellipse cx="1093.86" cy="120.00" rx="3.27" ry="1.89" fill="#ffb454" stroke="#8a5a12" stroke-width="1"/>
+<path d="M 1083.27 680.00 A 3.27 1.89 0 0 1 1076.73 680.00 L 1076.73 120.00 A 3.27 1.89 0 0 1 1083.27 120.00 Z" fill="#c88a35" stroke="#8a5a12" stroke-width="1"/>
+<ellipse cx="1080.00" cy="120.00" rx="3.27" ry="1.89" fill="#ffb454" stroke="#8a5a12" stroke-width="1"/>
+<path d="M 1069.41 680.00 A 3.27 1.89 0 0 1 1062.88 680.00 L 1062.88 120.00 A 3.27 1.89 0 0 1 1069.41 120.00 Z" fill="#c88a35" stroke="#8a5a12" stroke-width="1"/>
+<ellipse cx="1066.14" cy="120.00" rx="3.27" ry="1.89" fill="#ffb454" stroke="#8a5a12" stroke-width="1"/>
+<path d="M 1090.19 676.00 A 3.27 1.89 0 0 1 1083.66 676.00 L 1083.66 116.00 A 3.27 1.89 0 0 1 1090.19 116.00 Z" fill="#c88a35" stroke="#8a5a12" stroke-width="1"/>
+<ellipse cx="1086.93" cy="116.00" rx="3.27" ry="1.89" fill="#ffb454" stroke="#8a5a12" stroke-width="1"/>
+<path d="M 1076.34 676.00 A 3.27 1.89 0 0 1 1069.81 676.00 L 1069.81 116.00 A 3.27 1.89 0 0 1 1076.34 116.00 Z" fill="#c88a35" stroke="#8a5a12" stroke-width="1"/>
+<ellipse cx="1073.07" cy="116.00" rx="3.27" ry="1.89" fill="#ffb454" stroke="#8a5a12" stroke-width="1"/>
+<path d="M 1083.27 672.00 A 3.27 1.89 0 0 1 1076.73 672.00 L 1076.73 112.00 A 3.27 1.89 0 0 1 1083.27 112.00 Z" fill="#c88a35" stroke="#8a5a12" stroke-width="1"/>
+<ellipse cx="1080.00" cy="112.00" rx="3.27" ry="1.89" fill="#ffb454" stroke="#8a5a12" stroke-width="1"/>
+<polygon points="1080.00,668.00 1114.64,688.00 1080.00,708.00 1045.36,688.00" fill="none" stroke="#4cc2ff" stroke-width="2.4"/>
+<polygon points="1080.00,108.00 1114.64,128.00 1080.00,148.00 1045.36,128.00" fill="none" stroke="#4cc2ff" stroke-width="1.4"/>
+<line class="lead" x1="1099.40" y1="699.20" x2="1145.40" y2="709.20"/>
+<text x="1151.40" y="713.20" fill="#3ddc97" font-size="14">inlet（底面）</text>
+<line class="lead" x1="1099.40" y1="139.20" x2="1145.40" y2="131.20"/>
+<text x="1151.40" y="135.20" fill="#3ddc97" font-size="14">outlet（顶面）</text>
+<defs><marker id="ar" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#3ddc97"/></marker></defs>
+<line x1="1055.06" y1="606.40" x2="1055.06" y2="225.60" stroke="#3ddc97" stroke-width="2.4" marker-end="url(#ar)"/>
+<text x="1045.06" y="594.40" fill="#3ddc97" font-size="13">流动方向 · 3000 mm</text>
+<text x="70" y="754" class="m">模型：E:\dsh\test\fuel_assembly_5x5.scdocx　·　1 个体 · 31 面 · 4 个命名分区</text>
+</svg>

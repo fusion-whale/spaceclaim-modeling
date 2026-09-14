@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1420" height="900" viewBox="0 0 1420 900">
+<style>text{font-family:"Segoe UI","Microsoft YaHei",sans-serif}.t{fill:#e6ebf1}.m{fill:#93a1b0;font-size:13px}.ttl{fill:#e6ebf1;font-size:18px;font-weight:600}.lead{stroke:#ff6b6b;stroke-width:1;fill:none;stroke-dasharray:4 3}.dim{stroke:#ffb454;stroke-width:1.1;fill:none}.dimt{fill:#ffb454;font-size:12.5px}</style>
+<rect width="1420" height="900" fill="#0f1216"/>
+<defs><marker id="ar" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#3ddc97"/></marker></defs>
+<text x="110" y="52" class="ttl">A · 截面（垂直于流向）：一对 D 形通道，上下对齐</text>
+<text x="110" y="76" class="m">板宽 y=3.2 · 总厚 z=3.8 · 通道 R=1.0 · D 的平边朝 +z（弧往下鼓）</text>
+<rect x="150.0" y="170.0" width="275.2" height="326.8" fill="#2b333d" stroke="#8a93a0" stroke-width="2"/>
+<path d="M 201.60 359.20 L 373.60 359.20 A 86.00 86.00 0 0 1 201.60 359.20 Z" fill="#ff8a5c" fill-opacity="0.92" stroke="#0f1216" stroke-width="1.2"/><text x="287.6" y="410.8" fill="#0f1216" font-size="11" text-anchor="middle">热</text>
+<path d="M 201.60 221.60 L 373.60 221.60 A 86.00 86.00 0 0 1 201.60 221.60 Z" fill="#5cc8ff" fill-opacity="0.92" stroke="#0f1216" stroke-width="1.2"/><text x="287.6" y="273.2" fill="#0f1216" font-size="11" text-anchor="middle">冷</text>
+<line class="lead" x1="425.2" y1="333.4" x2="485.2" y2="333.4"/>
+<text x="491.2" y="338.4" fill="#ff6b6b" font-size="13">换热薄壁 0.6 mm（z 1.6~2.2）</text>
+<line class="lead" x1="373.6" y1="316.2" x2="485.2" y2="276.2"/>
+<text x="491.2" y="272.2" fill="#ff8a5c" font-size="13">热通道：弧 z 0.6~1.6</text>
+<line class="lead" x1="373.6" y1="178.6" x2="485.2" y2="212.6"/>
+<text x="491.2" y="208.6" fill="#5cc8ff" font-size="13">冷通道：弧 z 2.2~3.2</text>
+<line class="dim" x1="110.0" y1="170.0" x2="110.0" y2="496.8"/>
+<text x="100.0" y="333.4" class="dimt" text-anchor="middle" transform="rotate(-90 100.0 333.4)">总厚 3.8 = 1.6+1.6+0.6</text>
+<line class="dim" x1="150.0" y1="536.8" x2="425.2" y2="536.8"/>
+<text x="287.6" y="553.8" class="dimt" text-anchor="middle">板宽 3.2（通道 2 + 两侧 0.6）</text>
+<text x="900" y="52" class="ttl">B · 轴测</text>
+<text x="900" y="76" class="m">两条 D 形通道沿 x 贯穿 100 mm，上下对齐</text>
+<polygon points="1355.4,164.3 900.0,427.3 914.6,435.7 1370.0,172.7" fill="#20272f" stroke="#8a93a0" stroke-width="1.6"/>
+<path d="M 1358.2 161.7 L 911.8 429.9 L 911.8 430.2 L 911.7 430.5 L 911.5 430.7 L 911.2 430.9 L 910.9 430.9 L 910.5 431.0 L 910.1 430.9 L 909.6 430.9 L 909.0 430.7 L 908.5 430.5 L 907.9 430.2 L 907.3 429.9 L 906.7 429.5 L 906.1 429.1 L 905.5 428.7 L 905.0 428.2 L 904.5 427.7 L 904.1 427.3 L 903.7 426.8 L 903.3 426.3 L 903.1 425.8 L 902.9 425.4 L 902.8 425.0 L 902.7 424.6 L 1367.3 166.9 Z" fill="#ff8a5c" fill-opacity="0.85" stroke="#0f1216" stroke-width="0.8"/>
+<path d="M 1358.2 157.5 L 911.8 425.7 L 911.8 426.0 L 911.7 426.3 L 911.5 426.5 L 911.2 426.6 L 910.9 426.7 L 910.5 426.8 L 910.1 426.7 L 909.6 426.6 L 909.0 426.5 L 908.5 426.3 L 907.9 426.0 L 907.3 425.7 L 906.7 425.3 L 906.1 424.9 L 905.5 424.5 L 905.0 424.0 L 904.5 423.5 L 904.1 423.1 L 903.7 422.6 L 903.3 422.1 L 903.1 421.6 L 902.9 421.2 L 902.8 420.8 L 902.7 420.4 L 1367.3 162.7 Z" fill="#5cc8ff" fill-opacity="0.85" stroke="#0f1216" stroke-width="0.8"/>
+<polygon points="1355.4,154.3 900.0,417.3 914.6,425.7 1370.0,162.7" fill="#2b333d" stroke="#8a93a0" stroke-width="1.6"/>
+<text x="900.0" y="482.0" class="m" font-size="12.5">流向 +x（通道各长 100 mm）</text>
+<text x="900" y="540" class="ttl">C · 实测（独立校验回读）</text>
+<text x="900" y="568.0" fill="#4cc2ff" font-size="13">体数</text>
+<text x="1010" y="568.0" class="t" font-size="13">3 = 1 固体 + 1 热流体 + 1 冷流体</text>
+<text x="900" y="594.0" fill="#4cc2ff" font-size="13">固体域</text>
+<text x="1010" y="594.0" class="t" font-size="13">100 × 3.2 × 3.8 mm，10 个面（6 外壳 + 2 通道×2），体积 901.84 mm³</text>
+<text x="900" y="620.0" fill="#4cc2ff" font-size="13">流体域</text>
+<text x="1010" y="620.0" class="t" font-size="13">各 100 × 2.0 × 1.0 mm，4 个面（弧面 + 平顶面 + 2 端面）</text>
+<text x="900" y="646.0" fill="#4cc2ff" font-size="13">D 形截面</text>
+<text x="1010" y="646.0" class="t" font-size="13">面积 1.5708 mm² · 湿周 5.1416 mm · Dh = 1.2220 mm</text>
+<text x="900" y="672.0" fill="#4cc2ff" font-size="13">交界面</text>
+<text x="1010" y="672.0" class="t" font-size="13">hot / cold 各 2 对（弧面 314.16 + 平顶面 200）→ 两侧各 514.16 mm²</text>
+<text x="900" y="698.0" fill="#4cc2ff" font-size="13">cht_check</text>
+<text x="1010" y="698.0" class="t" font-size="13">ok=True；热↔冷正确判为不接触（中间隔着 0.6mm 固体）</text>
+<text x="150" y="876" class="m">模型：E:\dsh\test\pche_demo.scdocx　·　脚本：examples/pche_demo.py</text>
+</svg>

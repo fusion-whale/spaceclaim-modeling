@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1420" height="860" viewBox="0 0 1420 860">
+<style>text{font-family:"Segoe UI","Microsoft YaHei",sans-serif}.t{fill:#e6ebf1}.m{fill:#93a1b0;font-size:13px}.ttl{fill:#e6ebf1;font-size:18px;font-weight:600}.lead{stroke:#4cc2ff;stroke-width:1;fill:none;stroke-dasharray:4 3}.dim{stroke:#ffb454;stroke-width:1.1;fill:none}.dimt{fill:#ffb454;font-size:12.5px}</style>
+<rect width="1420" height="860" fill="#0f1216"/>
+<defs><marker id="ar" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#3ddc97"/></marker></defs>
+<text x="90" y="52" class="ttl">A · 俯视：10 × 4 = 40 根针翅，迎面绕流</text>
+<text x="90" y="76" class="m">流道 120 × 40 × 30 mm · 针翅半径 2 · 高 20 · 针间距 10（流向 / 横向都是 10）</text>
+<rect x="90.0" y="132.0" width="636.0" height="212.0" fill="#14202b" stroke="#4cc2ff" stroke-width="2.6"/>
+<circle cx="143.0" cy="158.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="196.0" cy="158.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="249.0" cy="158.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="302.0" cy="158.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="355.0" cy="158.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="408.0" cy="158.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="461.0" cy="158.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="514.0" cy="158.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="567.0" cy="158.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="620.0" cy="158.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="143.0" cy="211.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="196.0" cy="211.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="249.0" cy="211.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="302.0" cy="211.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="355.0" cy="211.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="408.0" cy="211.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="461.0" cy="211.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="514.0" cy="211.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="567.0" cy="211.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="620.0" cy="211.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="143.0" cy="264.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="196.0" cy="264.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="249.0" cy="264.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="302.0" cy="264.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="355.0" cy="264.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="408.0" cy="264.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="461.0" cy="264.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="514.0" cy="264.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="567.0" cy="264.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="620.0" cy="264.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="143.0" cy="317.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="196.0" cy="317.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="249.0" cy="317.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="302.0" cy="317.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="355.0" cy="317.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="408.0" cy="317.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="461.0" cy="317.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="514.0" cy="317.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="567.0" cy="317.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<circle cx="620.0" cy="317.5" r="10.6" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12" stroke-width="1"/>
+<line x1="94.0" y1="116.0" x2="150.0" y2="116.0" stroke="#3ddc97" stroke-width="2.2" marker-end="url(#ar)"/>
+<text x="158.0" y="121.0" fill="#3ddc97" font-size="13">流向 +x</text>
+<line class="dim" x1="143.0" y1="374.0" x2="196.0" y2="374.0"/>
+<text x="169.5" y="390.0" class="dimt" text-anchor="middle">针间距 10</text>
+<line class="dim" x1="609.4" y1="374.0" x2="630.6" y2="374.0"/>
+<text x="620.0" y="390.0" class="dimt" text-anchor="middle">r2</text>
+<text x="90" y="430" class="ttl">B · 纵剖面：针翅从底板立起 20，上方留 10 的旁通通道</text>
+<rect x="90.0" y="452.0" width="636.0" height="159.0" fill="#14202b" stroke="#4cc2ff" stroke-width="2.4"/>
+<rect x="90.0" y="608.0" width="636.0" height="3.0" fill="#4cc2ff" fill-opacity="0.28"/>
+<rect x="132.4" y="505.0" width="21.2" height="106.0" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12"/>
+<rect x="185.4" y="505.0" width="21.2" height="106.0" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12"/>
+<rect x="238.4" y="505.0" width="21.2" height="106.0" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12"/>
+<rect x="291.4" y="505.0" width="21.2" height="106.0" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12"/>
+<rect x="344.4" y="505.0" width="21.2" height="106.0" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12"/>
+<rect x="397.4" y="505.0" width="21.2" height="106.0" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12"/>
+<rect x="450.4" y="505.0" width="21.2" height="106.0" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12"/>
+<rect x="503.4" y="505.0" width="21.2" height="106.0" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12"/>
+<rect x="556.4" y="505.0" width="21.2" height="106.0" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12"/>
+<rect x="609.4" y="505.0" width="21.2" height="106.0" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12"/>
+<line class="lead" x1="249.0" y1="505.0" x2="390.0" y2="505.0"/>
+<text x="400.0" y="510.0" class="t" font-size="13">针翅顶面 fin_tips 在 z = 20</text>
+<text x="400.0" y="529.0" class="m" font-size="12.5">面以上到 z=30 是自由通道</text>
+<text x="738.0" y="609.0" class="m">底板 floor（被 40 个针脚挖掉 40·πr²）</text>
+<text x="1000" y="448" class="ttl">C · 端面 inlet</text>
+<rect x="1000.0" y="470.0" width="200.0" height="150.0" fill="#14202b" stroke="#4cc2ff" stroke-width="2.4"/>
+<circle cx="1010.0" cy="595.0" r="10.0" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12"/>
+<circle cx="1010.0" cy="545.0" r="10.0" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12"/>
+<circle cx="1010.0" cy="495.0" r="10.0" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12"/>
+<circle cx="1010.0" cy="445.0" r="10.0" fill="#ffb454" fill-opacity="0.85" stroke="#8a5a12"/>
+<text x="960.0" y="646.0" class="m">40 × 30，4 个针脚凸在底面（共 40 根）</text>
+<text x="1000" y="92" class="ttl">D · 实测（独立校验回读）</text>
+<text x="1000" y="118.0" class="t" font-size="13">inlet / outlet</text>
+<text x="1200" y="118.0" fill="#3ddc97" font-size="13">各 1200.00 mm²</text>
+<text x="1330" y="118.0" class="m" font-size="12.5">40 × 30</text>
+<text x="1000" y="142.0" class="t" font-size="13">top_wall（顶面）</text>
+<text x="1200" y="142.0" fill="#3ddc97" font-size="13">4800.00 mm²</text>
+<text x="1330" y="142.0" class="m" font-size="12.5">120 × 40</text>
+<text x="1000" y="166.0" class="t" font-size="13">floor（底板）</text>
+<text x="1200" y="166.0" fill="#3ddc97" font-size="13">4297.35 mm²</text>
+<text x="1330" y="166.0" class="m" font-size="12.5">4800 − 40·π·2²</text>
+<text x="1000" y="190.0" class="t" font-size="13">fins（针翅侧面 40 张）</text>
+<text x="1200" y="190.0" fill="#3ddc97" font-size="13">10053.10 mm²</text>
+<text x="1330" y="190.0" class="m" font-size="12.5">40 · 2π·2·20</text>
+<text x="1000" y="214.0" class="t" font-size="13">fin_tips（针翅顶面 40 张）</text>
+<text x="1200" y="214.0" fill="#3ddc97" font-size="13">502.65 mm²</text>
+<text x="1330" y="214.0" class="m" font-size="12.5">40 · π·2²</text>
+<text x="1000" y="238.0" class="t" font-size="13">side_wall（两侧）</text>
+<text x="1200" y="238.0" fill="#3ddc97" font-size="13">各 3600.00 mm²</text>
+<text x="1330" y="238.0" class="m" font-size="12.5">120 × 30</text>
+<text x="1000" y="268.0" class="t" font-size="13">体数 / 面数</text>
+<text x="1200" y="268.0" fill="#3ddc97" font-size="13">1 个体 / 86 面</text>
+<text x="1330" y="268.0" class="m" font-size="12.5">46 平面 + 40 圆柱面（手算 6 + 40 + 40）</text>
+<text x="1000" y="296.0" class="m">zone：inlet · outlet · top_wall · floor · fins · fin_tips · side_wall</text>
+<text x="90" y="834" class="m">模型：E:\dsh\test\pin_fin_demo.scdocx　·　脚本：examples/pin_fin_demo.py</text>
+</svg>
